@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @articles = Article.all
   end
@@ -8,7 +10,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @articles = current_user.articles
+    @articles = articles_for_user
   end
   
   def edit
@@ -16,7 +18,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
-    @article = current_user.articles.new(article_params)
+    @article = articles_for_user.new(article_params)
 
     if @article.save
       redirect_to users_show_path
@@ -47,6 +49,11 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article ||= current_user.articles.find(params[:id])
+    @article ||= articles_for_user.find(params[:id])
   end
+
+  def articles_for_user
+    current_user.articles
+  end
+
 end
