@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  get 'persons/profile', as: 'users'
+  get 'users/index', as: 'users'
 
-  get 'persons/show'
+  get 'users/show'
 
   resources :articles, only: [:index, :show]
 
