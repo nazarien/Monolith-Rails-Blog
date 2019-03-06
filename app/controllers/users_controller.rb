@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  include UsersHelper
+
   def index
     @users = User.all
   end
 
   def show
-    @articles = current_user.articles    
+    @articles = articles_for_user    
   end
 end

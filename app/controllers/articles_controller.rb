@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-
+  include UsersHelper
   def index
     @articles = Article.all
   end
@@ -51,9 +51,4 @@ class ArticlesController < ApplicationController
   def set_article
     @article ||= articles_for_user.find(params[:id])
   end
-
-  def articles_for_user
-    current_user.articles
-  end
-
 end
