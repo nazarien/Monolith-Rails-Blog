@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  include UsersHelper
+  include ArticlesHelper
+  
   def index
     @articles = Article.all
   end
