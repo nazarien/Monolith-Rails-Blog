@@ -1,0 +1,11 @@
+<h1>Profiles</h1>
+
+<% @users.each_with_index do |user, index| %>
+    <tr>
+      <%= index + 1 %>
+      <%= ' -- '%>
+      <td><%= user.email %></td>
+      <br>
+    </tr>
+<% end %>
+<%= link_to 'Home', root_path%>

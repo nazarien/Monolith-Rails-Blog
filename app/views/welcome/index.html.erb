@@ -1,0 +1,18 @@
+<h1>Hey, Rails</h1>
+<% if user_signed_in? %>
+	<%= link_to 'My blog', persons_show_path %>
+<% else %>
+	<%= link_to 'My blog', articles_path %>
+<% end %>
+<br>
+<% if user_signed_in? %>
+	<span>Hey, my friend - <%= current_user.email %></span>
+	<br>
+	<%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+<% else %>
+	<%= link_to 'Sign in', new_user_session_path %> або <%= link_to 'Sign up', new_user_registration_path %>
+<% end %>
+<br>
+<br>
+
+<%= link_to 'Users', users_path %>
