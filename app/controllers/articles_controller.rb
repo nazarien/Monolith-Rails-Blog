@@ -1,17 +1,17 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!
   include ArticlesHelper
+  before_action :authenticate_user!, except: :index
   
   def index
     @articles = Article.all
   end
   
   def show
-    set_article
+    @article = Article.find(params(:id))
   end
 
   def new
-    @articles = articles_for_user
+    @article = Article.new
   end
   
   def edit
@@ -42,7 +42,6 @@ class ArticlesController < ApplicationController
     redirect_to users_show_path
   end
 
-  
   private
 
   def article_params
