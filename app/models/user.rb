@@ -4,4 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   has_many :articles
+  has_many :user_articles, dependent: :destroy
+  has_many :favorite_articles, through: :user_articles, source: :article
+
+  enum role: [:user, :author]
+
 end

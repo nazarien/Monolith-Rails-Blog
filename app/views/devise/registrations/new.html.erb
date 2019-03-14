@@ -19,7 +19,10 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <br>
+    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
   </div>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>

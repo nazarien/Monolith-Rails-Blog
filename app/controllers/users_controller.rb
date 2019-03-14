@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-  include ArticlesHelper
 
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @articles = @user.articles
+    authorize current_user
   end
 end

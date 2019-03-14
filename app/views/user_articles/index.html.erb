@@ -1,5 +1,4 @@
-<h1>All Articles from all users</h1>
-
+<h1>Saved Articles</h1>
 <br>
 <%= link_to 'Home', root_path%>
 
@@ -10,13 +9,15 @@
     <th>Email</th>
     <th colspan="4"></th>
   </tr>
-  <% @articles.includes(:user).each do |article| %>
+  <% @saved_aritcles.includes(:user).each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><%= article.user.email %></td>
       <td><%= link_to 'Show', article_path(article.id) %></td>
-      <td><%= link_to 'Save', user_articles_path(id: article.id), method: :create %></td>
+      <td><%= link_to 'Remove', user_article_path(id: article.id), 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

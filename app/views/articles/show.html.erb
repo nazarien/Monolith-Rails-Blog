@@ -8,6 +8,8 @@
   <%= @article.text %>
 </p>
 
-<%= link_to 'To articles', user_path(current_user.id)%>
-<%= link_to 'Edit', edit_article_path(@article.id) %> |
-<%= link_to 'Home', root_path%>
+<%= link_to 'Back', :back %>
+<% if user_signed_in? && current_user == @article.user %>
+ | <%= link_to 'Edit', edit_article_path(@article.id) %> 
+<%end%>
+| <%= link_to 'Home', root_path%>
