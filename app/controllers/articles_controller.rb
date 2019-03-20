@@ -1,13 +1,14 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
     @articles = Article.all
   end
   
   def show
-    @article ||= Article.find(params[:id])
+    @article = Article.find(params[:id])
+    authorize @article
   end
 
   def new
@@ -23,9 +24,8 @@ class ArticlesController < ApplicationController
   def create
     @article = articles_for_user.new(article_params)
     authorize @article
-
     if @article.save
-      redirect_to user_path(current_user.id)
+      redirect_to show_path
     else
       render 'new'
     end

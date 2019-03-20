@@ -7,16 +7,22 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Id</th>
     <th>Email</th>
-    <th colspan="4"></th>
+    <th>Comments</th>
+    <th colspan="5"></th>
   </tr>
   <% @articles.includes(:user).each do |article| %>
     <tr>
       <td><%= article.title %></td>
       <td><%= article.text %></td>
+      <td><%= article.id %></td>
       <td><%= article.user.email %></td>
+      <td><%= article.comments.count %></td>
       <td><%= link_to 'Show', article_path(article.id) %></td>
-      <td><%= link_to 'Save', user_articles_path(id: article.id), method: :create %></td>
+      <% if user_signed_in? %>
+        <td><%= link_to 'Save', user_articles_path(id: article.id), method: :create %></td>
+      <%end%>
     </tr>
   <% end %>
 </table>

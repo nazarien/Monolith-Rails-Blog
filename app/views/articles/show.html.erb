@@ -8,7 +8,14 @@
   <%= @article.text %>
 </p>
 
-<%= link_to 'Back', :back %>
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+
+<%= link_to 'Back', articles_path %>
 <% if user_signed_in? && current_user == @article.user %>
  | <%= link_to 'Edit', edit_article_path(@article.id) %> 
 <%end%>

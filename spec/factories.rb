@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :comment do
+    commenter { "MyString" }
+    body { "MyText" }
+    article { nil }
+  end
+
   factory :user do
     email {'name@gmail.com'}
     password {'123456'}

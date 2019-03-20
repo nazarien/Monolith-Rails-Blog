@@ -1,0 +1,23 @@
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+  <% if comment.commenter == @article.user.email %>
+    | <b>Owner</b>
+  <%end%>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+<% if @current_user.email == @article.user.email || comment.commenter == @current_user.email  %>
+  <%= link_to 'Destroy Comment', comment_path(comment.id),
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  <%end%>
+<br>
+---------------------
+<br>
+</p>

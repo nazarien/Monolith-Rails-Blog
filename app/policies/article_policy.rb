@@ -10,7 +10,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    @current_user.present?
   end
 
   def new?

@@ -1,0 +1,38 @@
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @user.id %>
+</p>
+
+<h2>Comments:</h2>
+  <% @user.comments.each do |c| %>
+    <h4>Commenter</h4>
+    <%= c.commenter %>
+    <strong>Comment:</strong>
+    <%= c.body %>
+  <% end %>
+<br>
+<p>
+
+
+<%=  form_with model: @user.comments.build,  local: true  do |form| %>
+  <p>
+    <%= form.hidden_field :commenter, :value => current_user.email %>
+    <%= form.hidden_field :commentable_id, value: @user.id %>
+    <%= form.hidden_field :commentable_type, value: "User" %>
+  </p>
+  <p>
+    <%= form.label :Comment %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', users_path %>
+| <%= link_to 'Home', root_path%>

@@ -1,12 +1,15 @@
 <h1>Hey, Rails</h1>
 <% if user_signed_in?%>
-	<%= link_to 'Saved articles', user_articles_path %>   | 
+	<%= link_to 'Saved articles', user_articles_path %> - 
+	<%= current_user.favorite_articles.count %> | 
 	<% if user_signed_in? && current_user.author?%>
-		<%= link_to 'My articles', user_path(current_user.id) %>  | 
+		<%= link_to 'My articles', show_path %>  -
+		<%= current_user.articles.count %> | 
 	<% end %>
 <% end %>
 
-<%= link_to 'All articles', articles_path %>
+<%= link_to 'All articles', articles_path %> - 
+<%= @articles.count %> | 
 <br>
 <br>
 <% if user_signed_in? %>

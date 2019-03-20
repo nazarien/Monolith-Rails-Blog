@@ -1,0 +1,15 @@
+<%= form_with model: @article.comments.build, local: true do |form| %>
+  <p>
+    <%= form.hidden_field :commenter, :value => current_user.email %>
+    <%= form.hidden_field :commentable_id, value: @article.id %>
+    <%= form.hidden_field :commentable_type, value: "Article" %>
+    
+  </p>
+  <p>
+    <%= form.label :Comment %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

@@ -9,4 +9,8 @@ class UsersController < ApplicationController
     @articles = @user.articles
     authorize current_user
   end
+
+  def get_user
+    @user = User.find(params[:id])
+  end
 end

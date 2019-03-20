@@ -1,13 +1,20 @@
 <h1>Profiles</h1>
 
 <% @users.each_with_index do |user, index| %>
+  <table>
     <tr>
-      <%= index + 1 %>
-      <%= ' -- '%>
-      <td><%= user.email %></td>
-      <%= '. Id:  '%>
-      <td><%= user.id %></td>
-      <br>
+      <th>Number</th>
+      <th>Email</th>
+      <th>id</th>
+      <th colspan="4"></th>
     </tr>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= user.email %></td>
+        <td><%= user.id %></td>
+        <td><%= link_to 'Show', get_user_path(user.id) %></td>
+      </tr>
+  </table>
 <% end %>
+<br>
 <%= link_to 'Home', root_path%>
