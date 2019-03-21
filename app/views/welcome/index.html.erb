@@ -1,25 +1,21 @@
 <h1>Hey, Rails</h1>
 <% if user_signed_in?%>
-	<%= link_to 'Saved articles', user_articles_path %> - 
-	<%= current_user.favorite_articles.count %> | 
+		<%= link_to "Saved articles - #{current_user.favorite_articles.count}", user_articles_path, :class => "btn btn-primary"  %> 
 	<% if user_signed_in? && current_user.author?%>
-		<%= link_to 'My articles', show_path %>  -
-		<%= current_user.articles.count %> | 
+		<%= link_to "My articles - #{current_user.articles.count}", show_path,:class => "btn btn-primary"  %> 
 	<% end %>
 <% end %>
-
-<%= link_to 'All articles', articles_path %> - 
-<%= @articles.count %> | 
+<%= link_to "All articles - #{@articles.count}", articles_path, :class => "btn btn-primary" %>  
 <br>
 <br>
 <% if user_signed_in? %>
 	<span>Hey, my friend - <%= current_user.email %></span>
 	<br>
-	<%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
 <% else %>
-	<%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>
+	<%= link_to "Sign in", new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>
 <br>
 <br>
 
-<%= link_to 'Users', users_path %>
+<%= link_to "Users", users_path %>

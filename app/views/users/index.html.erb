@@ -1,20 +1,27 @@
 <h1>Profiles</h1>
-
-<% @users.each_with_index do |user, index| %>
-  <table>
+<table class="table">
+  <thead>
     <tr>
-      <th>Number</th>
-      <th>Email</th>
-      <th>id</th>
-      <th colspan="4"></th>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">id</th>
+      <% if user_signed_in?%>
+        <th scope="col">Show</th>
+      <% end %>
     </tr>
-      <tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @users.each_with_index do |user, index| %>
         <td><%= index + 1 %></td>
         <td><%= user.email %></td>
         <td><%= user.id %></td>
-        <td><%= link_to 'Show', get_user_path(user.id) %></td>
+        <% if user_signed_in?%>
+          <td><%= link_to 'Show', get_user_path(user.id), class: "btn btn-light" %></td>
+        <% end %>
       </tr>
-  </table>
-<% end %>
-<br>
-<%= link_to 'Home', root_path%>
+      <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Home', root_path, :class => "btn btn-light" %>

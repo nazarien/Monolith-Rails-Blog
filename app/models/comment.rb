@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
-  validates :body, presence: true
+  validates :commenter, :body, presence: true
   belongs_to :commentable, polymorphic: true
 end

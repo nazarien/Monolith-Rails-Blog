@@ -15,9 +15,9 @@
 <% if @current_user.email == @article.user.email || comment.commenter == @current_user.email  %>
   <%= link_to 'Destroy Comment', comment_path(comment.id),
                method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-  <%end%>
-<br>
----------------------
+               data: { confirm: 'Are you sure?' }, class: 'btn btn-light' %>
+  <br>
+  ---------------------
+<%end%>
 <br>
 </p>

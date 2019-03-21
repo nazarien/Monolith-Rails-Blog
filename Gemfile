@@ -35,6 +35,10 @@ gem 'rails-controller-testing'
 gem 'devise'
 # gem pundit
 gem 'pundit'
+# bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
+
 
 
 # Use Capistrano for deployment
@@ -57,6 +61,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # to draw database
+  gem 'rails-erd'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

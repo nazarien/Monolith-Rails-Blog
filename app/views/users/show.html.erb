@@ -1,36 +1,39 @@
-<h1>Author's Articles</h1>
-<% if user_signed_in? %>
-  <%= link_to 'New article', new_article_path %>
-<% else %>
-  fuck off
-<% end %>
-<br>
-<%= link_to 'Home', root_path%>
-<br>
-<br>
-<%= 'Email -- '  %>
-<%= @user.email %>
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="4"></th>
-  </tr>
-
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.id %></td>
-    <td><%= article.title %></td>
-    <td><%= article.text %></td>
-    <% if article.user == current_user %>
-      <td><%= link_to 'Show', article_path(article.id) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
-      <td><%= link_to 'Destroy', article_path(article.id),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
-<% end %>
-
+<h1><%= "Articles by #{@user.email}" %></h1>
+<div style="margin: 20px;">
+  <% if user_signed_in? %>
+    <%= link_to 'New article', new_article_path, :class => "btn btn-light" %>
+  <% else %>
+    fuck off
+  <% end %>
+  <%= link_to 'Home', root_path, :class => "btn btn-light" %>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Text</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.id %></td>
+          <td><%= article.title %></td>
+          <td><%= article.text %></td>
+          <% if article.user == current_user %>
+            <td><%= link_to 'Show', article_path(article.id) %></td>
+            <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
+            <td><%= link_to 'Destroy', article_path(article.id),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tr>
+  </tbody>
 </table>

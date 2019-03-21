@@ -1,21 +1,23 @@
-<p>
+<p style="font-size: 30px;">
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
-<p>
+<p style="font-size: 30px;">
   <strong>Id:</strong>
   <%= @user.id %>
 </p>
-
 <h2>Comments:</h2>
+<div style="margin-left: 20px;"> 
   <% @user.comments.each do |c| %>
-    <h4>Commenter</h4>
-    <%= c.commenter %>
-    <strong>Comment:</strong>
+  <div>
+    <h5>Comment by  <%= c.commenter %></h5>
     <%= c.body %>
-  <% end %>
-<br>
+    </div>
+  <br>
+<% end %>
+</div>
+
 <p>
 
 
@@ -30,7 +32,7 @@
     <%= form.text_area :body %>
   </p>
   <p>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </p>
 <% end %>
 
