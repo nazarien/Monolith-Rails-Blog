@@ -10,10 +10,10 @@ class CommentPolicy < ApplicationPolicy
   end 
 
   def create?
-    false
+    @current_user.present?
   end
-
+  
   def destroy?
-    false
+    @current_user.present? && @current_user.email == @comment.commenter
   end    
 end

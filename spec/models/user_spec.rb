@@ -18,6 +18,4 @@ describe User, type: :model do
     @user.password = nil
     expect(@user.valid?).to be_falsey
   end
-
-  
 end

@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe UserArticlesController, type: :controller do
+  before (:each) do 
+    @user = create(:user)
+    @article = create(:article)
+    sign_in(@user)
+  end
 
   describe "GET #index" do
     it "returns http success" do
@@ -9,16 +14,16 @@ RSpec.describe UserArticlesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe "GET #create" do
     it "returns http success" do
-      get :show
+      get :create
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #create" do
+  describe "GET #destroy" do
     it "returns http success" do
-      get :create
+      get :destroy
       expect(response).to have_http_status(:success)
     end
   end

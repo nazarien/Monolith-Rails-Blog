@@ -10,18 +10,24 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    @current_user.author?
+    author
   end    
 
   def create?
-    @current_user.author?
+    author
   end
 
   def update?
-    @current_user.author?
+    author
   end
 
   def destroy?
-    @current_user.author?
+    author
+  end
+
+  private
+
+  def author
+    @current_user.author?    
   end
 end

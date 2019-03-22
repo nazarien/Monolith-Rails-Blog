@@ -14,11 +14,11 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def new?
-    @current_user.author?
+    author
   end
 
   def create?
-    @current_user.author? 
+    author
   end
 
   def edit?
@@ -34,6 +34,10 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   private 
+  
+  def author
+    @current_user.author?
+  end
   
   def owner_article
     @current_user.author? && @current_user.id == @article.user_id

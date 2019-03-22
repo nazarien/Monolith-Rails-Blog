@@ -6,14 +6,20 @@ class UserArticlePolicy < ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 
   def create?
-    false
+    present
   end
 
   def destroy?
-    false
+    present
+  end
+
+  private
+
+  def present
+    @current_user.present?
   end
 end

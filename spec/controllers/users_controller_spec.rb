@@ -17,16 +17,18 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     it "returns http success on show" do
-      user = create(:user)
-      sign_in(user)
-      get :show, params: { id: user.id }
+      @user = create(:user, :with_articles)
+      # sign_in(user)
+      session[:user_id] = @user[:id]
+
+      get :show
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "routing" do
     it "routes to #show" do
-      expect(get: '/users/1').to route_to(controller: 'users', action: 'show', id: '1')
+      expect(get: '/users/1').to route_to(controller: 'users', action: 'get_user', id: '1')
     end
   end
 

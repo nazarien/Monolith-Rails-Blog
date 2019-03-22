@@ -25,7 +25,7 @@ describe ArticlesController, :type => :controller do
   describe "create action" do
     it "redirect to show page if article create" do
       post :create, params: { article: { title: 'name !', text: 'article' } } 
-      expect(response).to redirect_to(user_path(@user.id))
+      expect(response).to redirect_to(article_path(@article.id))
     end
 
     it "redirect to new page if article not create" do

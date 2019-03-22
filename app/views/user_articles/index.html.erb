@@ -7,6 +7,7 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Text</th>
+      <th scope="col">Id</th>
       <th scope="col">Email</th>
       <th scope="col">Show</th>
       <th scope="col">Remove</th>
@@ -18,6 +19,7 @@
         <tr>
           <td><%= article.title %></td>
           <td><%= article.text %></td>
+          <td><%= article.id %></td>
           <td><%= article.user.email %></td>
           <td><%= link_to 'Show', article_path(article.id), :class => "btn btn-light"  %></td>
           <td><%= link_to 'Remove', user_article_path(id: article.id), 
