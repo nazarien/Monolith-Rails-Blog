@@ -24,8 +24,8 @@ describe ArticlesController, :type => :controller do
 
   describe "create action" do
     it "redirect to show page if article create" do
-      post :create, params: { article: { title: 'name !', text: 'article' } } 
-      expect(response).to redirect_to(article_path(@article.id))
+      post :create, params: { article: { title: 'name !', text: 'article', id: @article.id } } 
+      expect(response).to redirect_to(article_path(assigns(:article)))
     end
 
     it "redirect to new page if article not create" do
@@ -37,7 +37,7 @@ describe ArticlesController, :type => :controller do
   describe "destroy action" do
     it "redirects to index action when article destroyed" do
       delete :destroy, params: { id: @article.id }
-      expect(response).to redirect_to(user_path(@user.id))
+      expect(response).to redirect_to(show_path)
     end
   end
 

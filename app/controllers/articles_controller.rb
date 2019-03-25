@@ -25,14 +25,14 @@ class ArticlesController < ApplicationController
     @article = articles_for_user.new(article_params)
     authorize @article
     if @article.save
-      redirect_to article_path
+      redirect_to article_path(@article.id)
     else
       render 'new'
     end
   end
 
   def update
-    authorize @article
+    authorize set_article
     if set_article.update(article_params)
       redirect_to set_article
     else
@@ -41,10 +41,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    authorize @article
-    @article = articles_for_user.find(params[:id]).destroy
+    authorize set_article
+    set_article.destroy
   
-    redirect_to user_path(current_user.id)
+    redirect_to show_path
   end
 
   private

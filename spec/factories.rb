@@ -1,15 +1,7 @@
 FactoryBot.define do
-    # factory :user do
-      # email {'name1321312@gmail.com'}
-      # password {'123456'}
-      # password_confirmation {'123456'}
-      # id {'1'}
-    # end
-
     factory :article do
       title {"exsampldsfae1 title"}
       text {"exsampfsdale text"}
-      id { 1 }
     end    
 
     factory :comment do
@@ -29,7 +21,7 @@ FactoryBot.define do
       email {'name1321312@gmail.com'}
       password {'123456'}
       password_confirmation {'123456'}
-      id {'1'}
+      role { 'author' }
 
       trait :with_articles do
         after :create do |user|
